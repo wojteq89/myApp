@@ -100,6 +100,7 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 20px;
+    margin-top: 40px;
     margin-bottom: 100px;
     margin-left: 50px;
     margin-right: 50px;

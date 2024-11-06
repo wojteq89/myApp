@@ -23,8 +23,8 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: 'tab2',
-        name: 'CarTips',
-        component: () => import('@/views/CarTips.vue')
+        name: 'CarCompare',
+        component: () => import('@/views/CarCompare.vue')
       },
       {
         path: 'tab3',
