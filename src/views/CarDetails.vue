@@ -124,4 +124,13 @@ export default {
 .back-button:hover {
     transform: scale(1.1);
 }
+
+@media only screen and (max-width: 700px) {
+    .back-button {
+        top: 10px;
+        right: 5px;
+        z-index: 100;
+    }
+
+}
 </style>

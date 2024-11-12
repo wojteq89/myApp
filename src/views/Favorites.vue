@@ -18,9 +18,9 @@
                     </div>
                     <div class="car-info">
                         <h2>{{ car.name }}</h2>
-                        <p>Rok: {{ car.year }}</p>
-                        <p>Konie mechaniczne: {{ car.horsepower }}</p>
-                        <p>Typ nadwozia: {{ car.bodyType }}</p>
+                        <p class="description">Rok: {{ car.year }}</p>
+                        <p class="description">Konie mechaniczne: {{ car.horsepower }}</p>
+                        <p class="description">Typ nadwozia: {{ car.bodyType }}</p>
                     </div>
                     <div class="car-actions">
                         <button class="details-button" @click="viewDetails(car)">
@@ -122,6 +122,7 @@ export default {
 .car-item:hover {
     z-index: 5;
     box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.384);
+    height: 500px;
 }
 
 .car-thumbnail {
@@ -131,6 +132,7 @@ export default {
     overflow: hidden;
     margin-right: 10px;
     transition: all 0.3s ease-in-out;
+    z-index: 2;
 }
 
 .car-thumbnail:hover {
@@ -145,6 +147,10 @@ export default {
     object-fit: cover;
 }
 
+.car-info {
+    position: relative;
+}
+
 .car-info h2 {
     font-size: 18px;
     font-weight: bold;
@@ -152,16 +158,30 @@ export default {
     color: #ff0000;
 }
 
-.car-info p {
+.description {
     margin: 4px 0 0;
     color: #ffffff;
     font-size: 14px;
+    opacity: 0;
+    position: absolute;
+    top: -100px;
+    z-index: 1;
+    transition: all 0.3s ease-in-out;
 }
+
+.car-item:hover .description {
+    top: 0;
+    z-index: 1;
+    opacity: 1;
+    position: relative;
+}
+
 
 .car-actions {
     margin-top: 20px;
     display: flex;
     text-align: center;
+    position: relative;
 }
 
 .details-button,
@@ -173,13 +193,38 @@ export default {
     border: none;
     cursor: pointer;
     transition: all 0.5s ease-in-out;
-    margin-left: 20px;
-    margin-right: 20px;
+
+    opacity: 0;
+    position: absolute;
+    top: -100px;
+    z-index: 1;
+}
+
+.details-button {
+    right: 10px;
+}
+
+.remove-button {
+    left: 10px;
 }
 
 .details-button:hover,
 .remove-button:hover {
     transform: scale(1.3);
+}
+
+.car-item:hover .details-button {
+    top: 0;
+    z-index: 1;
+    opacity: 1;
+    position: relative;
+}
+
+.car-item:hover .remove-button {
+    top: 0;
+    z-index: 1;
+    opacity: 1;
+    position: relative;
 }
 
 .remove-button {
@@ -190,5 +235,17 @@ export default {
     margin-top: 20px;
     font-size: 16px;
     color: #888;
+}
+
+@media only screen and (max-width: 700px) {
+    .car-item {
+        height: 300px;
+    }
+    .car-item:hover .car-thumbnail {
+        width: 300px;
+        height: 200px;
+        box-shadow: 0px 10px 40px 10px rgba(0, 0, 0, 0.637);
+    }
+
 }
 </style>

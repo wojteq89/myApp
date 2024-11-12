@@ -16,12 +16,12 @@
                 </div>
                 <div class="car-info">
                     <h2>{{ car.name }}</h2>
-                    <p>Rok: {{ car.year }}</p>
+                    <p class="description">Rok: {{ car.year }}</p>
                 </div>
                 <div class="car-actions">
                     <button class="details-button" @click="viewDetails(car)">Szczegóły</button>
                     <button class="favorite-button" @click="toggleFavorite(car)">
-                        <img :src="isFavorite(car) ? '/images/favorite.png' : '/images/not-favorite.png'" alt="favorite status" />
+                        <img class="fav-image" :src="isFavorite(car) ? '/images/favorite.png' : '/images/not-favorite.png'" alt="favorite status" />
                     </button>
                 </div>
             </div>
@@ -271,7 +271,7 @@ export default {
     margin-left: 20px;
 }
 
-.car-info p {
+.description {
     margin-left: 5px;
     margin-top: 5px;
     color: #666;
@@ -279,7 +279,7 @@ export default {
     transition: all 0.3s ease-in-out;
 }
 
-.car-item:hover .car-info p {
+.car-item:hover .description {
     color: rgb(180, 180, 180);
     margin-left: 20px;
 }
@@ -316,5 +316,90 @@ export default {
 .details-button:hover,
 .favorite-button:hover {
     transform: scale(1.1);
+}
+
+@media only screen and (max-width: 700px) {
+    .car-item {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .car-item:hover {
+        background: linear-gradient(120deg, rgba(20, 20, 20, 0.199) 30%, rgba(172, 172, 172, 0.192) 70%);
+    }
+
+    .car-thumbnail {
+        margin-bottom: 20px;
+        z-index: 2;
+    }
+
+    .car-item:hover .car-thumbnail {
+        width: 100%;
+        height: 200px;
+        margin-bottom: 20px;
+    }
+
+    .car-thumbnail {
+        width: 200px;
+        height: 200px;
+    }
+    .description {
+        position: absolute;
+        top: 20px;
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .car-item:hover .description {
+        top: 0;
+        position: relative;
+        opacity: 1;
+    }
+    
+    .car-actions {
+        position: absolute;
+        width: 100%;
+        display: flex;
+        opacity: 0;
+        top: 40px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .car-item:hover .car-actions {
+        z-index: 1;
+        opacity: 1;
+        top: 0;
+        position: relative;
+    }
+
+    .details-button, .favorite-button {
+        flex-basis: 50%;
+    }
+
+    .fav-image {
+        min-height: 50px;
+        min-width: 50px;
+    }
+
+    .car-item:hover .car-info h2 {
+        text-align: center;
+        margin-left: 0px;
+    }
+
+    .description {
+        text-align: center;
+        margin: 0;
+        margin-left: -20px;
+    }
+
+    .car-info:hover .description {
+        text-align: center;
+        margin-left: 0px;
+    }
+
+    .car-item:hover .description {
+        margin-left: 0px;
+    }
 }
 </style>
