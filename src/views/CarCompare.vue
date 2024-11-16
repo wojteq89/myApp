@@ -8,7 +8,7 @@
         <ion-title>Porównanie Samochodów</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content>
+    <ion-content scroll-y="true">
       <div class="compare-container">
         <div class="car-selection">
           <h2>Wybierz samochody do porównania:</h2>
@@ -168,8 +168,15 @@ export default {
 </script>
 
 <style scoped>
+ion-content {
+  height: 100%;
+  overflow-y: scroll;
+}
+
 .compare-container {
   padding: 20px;
+  touch-action: auto;
+  min-height: 100vh;
 }
 
 .car-selection {

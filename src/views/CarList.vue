@@ -8,7 +8,7 @@
             <ion-title>Lista samochodów</ion-title>
         </ion-toolbar>
     </ion-header>
-    <ion-content>
+    <ion-content scroll-y="true">
         <div class="car-list">
             <div class="car-item" v-for="(car, index) in cars" :key="index">
                 <div class="car-thumbnail">
@@ -211,11 +211,18 @@ export default {
 </script>
 
 <style scoped>
+
+ion-content {
+  height: 100%;
+  overflow-y: scroll;
+}
+
 .car-list {
     display: flex;
     flex-direction: column;
     gap: 12px;
     padding: 20px;
+    min-height: 100vh;
 }
 
 .car-item {

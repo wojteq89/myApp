@@ -8,7 +8,7 @@
             <ion-title>Ulubione Samochody</ion-title>
         </ion-toolbar>
     </ion-header>
-    <ion-content>
+    <ion-content scroll-y="true">
         <div class="favorites-container">
             <h2>Ulubione Samochody:</h2>
             <div class="car-list">
@@ -88,9 +88,16 @@ export default {
 </script>
 
 <style scoped>
+
+ion-content {
+  height: 100%;
+  overflow-y: scroll;
+}
+
 .favorites-container {
     text-align: center;
     color: #ffffff;
+    min-height: 100vh;
 }
 
 .car-list {

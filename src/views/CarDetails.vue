@@ -8,7 +8,7 @@
             <ion-title>{{ car.name }}</ion-title>
         </ion-toolbar>
     </ion-header>
-    <ion-content>
+    <ion-content scroll-y="true">
         <div class="car-details">
             <div class="car-image">
                 <img :src="car.image" alt="Samochód" />
@@ -75,9 +75,16 @@ export default {
 </script>
 
 <style scoped>
+
+ion-content {
+  height: 100%;
+  overflow-y: scroll;
+}
+
 .car-details {
     color: rgb(255, 255, 255);
     text-align: left;
+    min-height: 100vh;
 }
 
 .car-image img {
